@@ -25,8 +25,10 @@ int main(int argc, char *argv[])
 
     string s;
     int n;
-    cout << "please input:";
-    cin >> s >> n;
+//    cout << "please input:";
+//    cin >> s >> n;
+    s = "101.1";
+    n = 2.37;
     cout << solve(s, n) << endl;
 //    while(cin>>s>>n)
 //    {
