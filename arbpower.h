@@ -15,6 +15,9 @@ public:
     explicit ArbPower(QWidget *parent = 0);
     ~ArbPower();
 
+private slots:
+    void on_calculateButton_clicked();
+
 private:
     Ui::ArbPower *ui;
 };

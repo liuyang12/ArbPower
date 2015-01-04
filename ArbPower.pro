@@ -18,3 +18,6 @@ SOURCES += main.cpp\
 HEADERS  += arbpower.h
 
 FORMS    += arbpower.ui
+
+RESOURCES += \
+    res.qrc
