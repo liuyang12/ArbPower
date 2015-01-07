@@ -6,19 +6,23 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>613</width>
+    <height>182</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ArbPower</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/Res/interstate.png</normaloff>:/Res/interstate.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLineEdit" name="baseEdit">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
+      <x>10</x>
+      <y>20</y>
       <width>112</width>
       <height>24</height>
      </rect>
@@ -42,8 +46,8 @@
    <widget class="QLabel" name="powerLabel">
     <property name="geometry">
      <rect>
-      <x>166</x>
-      <y>29</y>
+      <x>126</x>
+      <y>19</y>
       <width>16</width>
       <height>16</height>
      </rect>
@@ -63,8 +67,8 @@
    <widget class="QLineEdit" name="exponentEdit">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>30</y>
+      <x>140</x>
+      <y>20</y>
       <width>112</width>
       <height>24</height>
      </rect>
@@ -88,9 +92,9 @@
    <widget class="QLineEdit" name="answerShow">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>59</y>
-      <width>242</width>
+      <x>260</x>
+      <y>20</y>
+      <width>221</width>
       <height>24</height>
      </rect>
     </property>
@@ -112,8 +116,8 @@
    <widget class="QPushButton" name="calculateButton">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>90</y>
+      <x>10</x>
+      <y>80</y>
       <width>242</width>
       <height>24</height>
      </rect>
@@ -132,13 +136,301 @@ border-image: url(:/Res/button_calculate_normal.png);</string>
      <string>计  算</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="answerShow_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>50</y>
+      <width>221</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Res/kb.png);</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="answerShow_3">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>80</y>
+      <width>221</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Res/kb.png);</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>538</x>
+      <y>22</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>系统函数</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>538</x>
+      <y>51</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>方法一</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>538</x>
+      <y>81</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>方法二</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorLabel">
+    <property name="geometry">
+     <rect>
+      <x>82</x>
+      <y>52</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="baseSignLabel">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>52</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="exponentSignLabel">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>51</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>481</x>
+      <y>22</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>×10</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="answerExponentlabel">
+    <property name="geometry">
+     <rect>
+      <x>508</x>
+      <y>18</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="answerExponentlabel_2">
+    <property name="geometry">
+     <rect>
+      <x>508</x>
+      <y>47</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>481</x>
+      <y>51</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>×10</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="answerExponentlabel_3">
+    <property name="geometry">
+     <rect>
+      <x>508</x>
+      <y>77</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>481</x>
+      <y>81</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cambria Math</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>×10</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>613</width>
      <height>23</height>
     </rect>
    </property>
@@ -154,6 +446,8 @@ border-image: url(:/Res/button_calculate_normal.png);</string>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

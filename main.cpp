@@ -1,5 +1,7 @@
 #include "arbpower.h"
 #include <QApplication>
+#include <QDebug>
+//#include "functions.cpp"
 
 #include <stdio.h>
 #include <iostream>

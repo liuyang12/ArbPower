@@ -18,8 +18,15 @@ public:
 private slots:
     void on_calculateButton_clicked();
 
+    void on_baseEdit_textChanged(const QString &arg1);
+
+    void on_exponentEdit_textChanged(const QString &arg1);
+
 private:
     Ui::ArbPower *ui;
+    void calculate(void);
+
+//    bool calculatePressed;
 };
 
 #endif // ARBPOWER_H

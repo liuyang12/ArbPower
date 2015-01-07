@@ -13,11 +13,18 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        arbpower.cpp
+        arbpower.cpp \
+    powP.cpp \
+    Taylor.cpp \
+    functions.cpp
 
-HEADERS  += arbpower.h
+HEADERS  += arbpower.h \
+    functions.h \
+    Taylor.h
 
 FORMS    += arbpower.ui
 
 RESOURCES += \
     res.qrc
+
+OTHER_FILES +=

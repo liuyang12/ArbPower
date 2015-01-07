@@ -6,5 +6,7 @@
         <file>Res/button_calculate_down.png</file>
         <file>Res/button_calculate_hover.png</file>
         <file>Res/button_calculate_normal.png</file>
+        <file>Res/X_Y_chromosome.jpg</file>
+        <file>Res/interstate.png</file>
     </qresource>
 </RCC>
