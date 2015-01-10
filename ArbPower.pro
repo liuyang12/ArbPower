@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         arbpower.cpp \
     powP.cpp \
     Taylor.cpp \
-    functions.cpp
+    functions.cpp \
+    ode.cpp
 
 HEADERS  += arbpower.h \
     functions.h \
-    Taylor.h
+    Taylor.h \
+    ode.h
 
 FORMS    += arbpower.ui
 

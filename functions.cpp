@@ -8,6 +8,8 @@
 
 #include <QStringList>
 #include "functions.h"
+#include "Taylor.h"
+#include "ode.h"
 
 /// 科学计数法与字符串之间的转化
 // 已通过 setValidator 限定 str 为双精度数
@@ -18,7 +20,10 @@ SciNumber StringtoSci(QString str)
     if(strlist.size() < 2)  // 不是科学计数法
         return DoubletoSci(str.toDouble()); // 先转化为 double 型在再进行运算转化为科学计数法，其中 str 支持科学计数法 0.1234e3
     else    // 是科学计数法 strlist[0] strlist[1] 分别是浮点数和指数
-        return SciNumber(strlist[0].toDouble(), strlist[1].toInt());
+    {
+        SciNumber tempSci = StringtoSci(strlist[0]);                 // 处理用户输入 123.456e-3e-2 = 1.23456e-3（科学计数法的嵌套问题）
+        return SciNumber(tempSci.a, tempSci.n + strlist[1].toInt());
+    }
 }
 
 /// 浮点数与科学计数法之间的转化
@@ -101,5 +106,76 @@ int getSignificants(double num)
 
 
 //#endif // GET_SIGNIFICANTS
+// 一般方法，不使用科学计数法，无法处理 x^y 超出 double 范围的情况，此时需要指定结果为 0
+double power_all(double x, double y, METHOD method)
+{
+    SciNumber sx = DoubletoSci(x);
+    if(sx.n * y < -307)     // x^y < 1e-307
+        return 0.0;
+    switch (method) {   // 选择方法
+    case TAYLOR:    // Taylor 展开方法
+        return power_taylor(x, y);
+        break;
+    case ODE:       // 常微分方程初值问题解方法
+        return power_ode(x, y);
+        break;
+    default:
+        return 0.0;
+        break;
+    }
+}
+
+// 科学计数法 power 运算，可以处理任意精度 (1^-99999999)^3 = ? int 的范围 [-2147483648, 2147483647]，如果 int n 采用 longlong 结果会更加突出
+SciNumber power_sci(SciNumber sx, SciNumber sy, METHOD method)
+{
+    double y = ScitoDouble(sy); // 先将幂次转化为 double 型
+    double ex;
+    switch (method) {
+    case TAYLOR:
+        ex = y*(sx.n + log10_taylor(sx.a));
+        break;
+    case ODE:
+        ex = y*(sx.n + log10_ode(sx.a));
+        break;
+    default:
+        ex = 0.0;
+        break;
+    }
+    return exp10_tosci(ex, method);
+}
+
+// 浮点数的 10 次幂
+SciNumber exp10_tosci(double x, METHOD method)
+{
+    int n = FLOOR(x);       // 向下取整
+    double a;
+    switch (method) {   // 选择方法
+    case TAYLOR:    // Taylor 展开方法
+        a = exp_taylor(LN_TEN * (x - n));    // a = 10^(x-n) = e^(ln(10)*(x-n))
+        break;
+    case ODE:       // 常微分方程初值问题解方法
+        a = exp_ode(LN_TEN * (x - n));
+        break;
+    default:
+        break;
+    }
+    return SciNumber(a, n);
+}
+
+// 科学计数法 ln(x) 运算
+double ln_sci(SciNumber sn, METHOD method)     // 返回值为 浮点数而不是科学计数法，因为 ln(sn) 不会越界
+{
+    switch (method) {
+    case TAYLOR:
+        return (LN_TEN * 1.0 * sn.n + ln_taylor(sn.a));
+        break;
+    case ODE:
+        return (LN_TEN * 1.0 * sn.n + ln_ode(sn.a));
+        break;
+    default:
+        return 0;
+        break;
+    }
+}
 
 #endif // FUNCTIONS_CPP

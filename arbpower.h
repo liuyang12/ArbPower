@@ -22,6 +22,14 @@ private slots:
 
     void on_exponentEdit_textChanged(const QString &arg1);
 
+    void on_prec_comboBox_currentIndexChanged(int index);
+
+    void on_action10_triggered();
+
+    void on_action14_triggered();
+
+    void on_action18_triggered();
+
 private:
     Ui::ArbPower *ui;
     void calculate(void);
