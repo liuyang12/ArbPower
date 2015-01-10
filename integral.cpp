@@ -3,7 +3,6 @@
 // ln(x) = Integ{1, x}(dt/t)
 #include "integral.h"
 #include "Taylor.h"
-#include <QDebug>
 
 #define MAX_K 100
 #define f(x) (1.0/(x))      // x的倒数，注意x == 0 情形
@@ -75,7 +74,6 @@ double ln_integral(double x, bool MID)
             break;
     }
     // 结果T[k][0]
-    qDebug() << "龙贝格算法加速次数：" << k;
     return (T[k][0] + K*LN_TWO);    // ln(x) = ln(u) + K*ln(2)
 }
 

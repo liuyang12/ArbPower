@@ -1,12 +1,10 @@
 #include "arbpower.h"
 #include "ui_arbpower.h"
-#include <QDebug>
 #include <math.h>
 #include "functions.h"  // 科学计数法 SciNumber 及其相关转换关系
 #include "Taylor.h"     // Taylor 展开方法
 #include "ode.h"        // 常微分方程初值问题解方法
 #include "integral.h"   // 数值积分 - 龙贝格算法
-#include "powP.cpp"
 
 #define SMALL_SIZE QSize(260, 322)
 #define MIDDLE_SIZE QSize(896, 322)
@@ -65,20 +63,13 @@ void ArbPower::calculate()
         x = 0;
     else
          x = str_x.toDouble(&ok_x);
-    qDebug() << QString::number(ln_integral(x, true), 'f', 15);
-    qDebug() << QString::number(log(x), 'f', 15);
     if(StringtoSci(str_y).n < -307)
         y = 0;
     else
         y = str_y.toDouble(&ok_y);
-//    qDebug() << QString::number(exp_ode(y), 'f', 15);
-    qDebug() << QString::number(exp(y), 'f', 15);
     ui->errorLabel->clear();
     ui->baseSignLabel->setText("有效位数："+QString::number(getSignificants(str_x)));
     ui->exponentSignLabel->setText("有效位数："+QString::number(getSignificants(str_y)));
-//    qDebug() << getSignificants("10221.21");
-//    if(calculatePressed)
-//    this->resize(558, 182);
     // 在进行计算之前需要校验 x, y 的合法性
     int prec = ui->prec_comboBox->currentText().toInt();    // 当前显示精度
     // 系统函数
@@ -126,15 +117,6 @@ void ArbPower::calculate()
     ansSci = power_sci(StringtoSci(str_x), StringtoSci(str_y), ROOT);      // 将浮点数转化为科学计数法
     ui->answerShow_9->setText(QString::number(ansSci.a, 'g', prec));   // 十位有效数字显示，小数点后九位
     ui->answerExponentlabel_9->setText(QString::number(ansSci.n));
-//    ans = pow_ff(x, y);
-//    ansSci = DoubletoSci(ans);      // 将浮点数转化为科学计数法
-//    ui->answerShow_3->setText(QString::number(ansSci.a, 'g', 18));   // 十位有效数字显示，小数点后九位
-//    ui->answerExponentlabel_3->setText(QString::number(ansSci.n));
-//    ansString = QString::number(ans, 'f', 10);
-//    ui->answerShow_2->setText(ansString);
-    // 验证 QString::number(); 为四舍五入的结果
-    // 注意：此处若为 1.25 精确两位有效数字为 1.2 若为 1.250000000000001（16位有效数字），结果为 1.3
-    qDebug() << QString::number(0.0012500000000000001, 'g', 2);         // 两位有效数字
 }
 
 void ArbPower::on_calculateButton_clicked()

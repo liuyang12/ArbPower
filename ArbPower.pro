@@ -14,7 +14,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         arbpower.cpp \
-    powP.cpp \
     Taylor.cpp \
     functions.cpp \
     ode.cpp \
@@ -32,5 +31,7 @@ FORMS    += arbpower.ui
 
 RESOURCES += \
     res.qrc
+
+RC_FILE = myicon.rc
 
 OTHER_FILES +=

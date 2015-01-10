@@ -22,7 +22,7 @@ double exp_root(double x, METHOD method)
     double y0 = 1.0;
     double y, y_prev;
     double err = 1.0;
-    while(FABS(err) >= ERROR_ANS)
+    while(FABS(err >= ERROR_ANS))
     {
         switch (method) {
         case TAYLOR:
@@ -40,7 +40,7 @@ double exp_root(double x, METHOD method)
         }
         y_prev = y0;
         y0 = y;
-        err = y - y_prev;   // 误差
+        err = (y - y_prev)/y;   // 相对误差
     }
     return y;
 }

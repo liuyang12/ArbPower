@@ -15,7 +15,7 @@
 
 #define STEP        1.0e-5      // 常微分方程初值问题解方法步长 h
 #define ERROR_STORE 0.5e-14     // 设定计算过程中，存储误差限，小数点后 14 位
-#define ERROR_ANS   0.5e-15     // 计算结果误差限，小数点后 15 位
+#define ERROR_ANS   0.5e-14     // 计算结果误差限，小数点后 15 位
 
 #define FABS(x) ((x >= 0) ? (x) : (-x))      // 取绝对值
 #define FLOOR(x) (x >= 0 || (int(x) - x <= ZERO) ? (int(x)) : (int(x) - 1))   // 向下取整函数
