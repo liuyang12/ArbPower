@@ -17,12 +17,16 @@ SOURCES += main.cpp\
     powP.cpp \
     Taylor.cpp \
     functions.cpp \
-    ode.cpp
+    ode.cpp \
+    integral.cpp \
+    root.cpp
 
 HEADERS  += arbpower.h \
     functions.h \
     Taylor.h \
-    ode.h
+    ode.h \
+    integral.h \
+    root.h
 
 FORMS    += arbpower.ui
 

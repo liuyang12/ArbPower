@@ -8,5 +8,9 @@
         <file>Res/button_calculate_normal.png</file>
         <file>Res/X_Y_chromosome.jpg</file>
         <file>Res/interstate.png</file>
+        <file>Res/eightteen.png</file>
+        <file>Res/fourteen.png</file>
+        <file>Res/ten.png</file>
+        <file>Res/ten_87_60.png</file>
     </qresource>
 </RCC>

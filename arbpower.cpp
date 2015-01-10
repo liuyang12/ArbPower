@@ -5,10 +5,11 @@
 #include "functions.h"  // 科学计数法 SciNumber 及其相关转换关系
 #include "Taylor.h"     // Taylor 展开方法
 #include "ode.h"        // 常微分方程初值问题解方法
+#include "integral.h"   // 数值积分 - 龙贝格算法
 #include "powP.cpp"
 
-#define SMALL_SIZE QSize(260, 278)
-#define MIDDLE_SIZE QSize(690, 278)
+#define SMALL_SIZE QSize(260, 322)
+#define MIDDLE_SIZE QSize(896, 322)
 
 ArbPower::ArbPower(QWidget *parent) :
     QMainWindow(parent),
@@ -64,7 +65,7 @@ void ArbPower::calculate()
         x = 0;
     else
          x = str_x.toDouble(&ok_x);
-//    qDebug() << QString::number(ln_ode(x), 'f', 15);
+    qDebug() << QString::number(ln_integral(x, true), 'f', 15);
     qDebug() << QString::number(log(x), 'f', 15);
     if(StringtoSci(str_y).n < -307)
         y = 0;
@@ -105,6 +106,26 @@ void ArbPower::calculate()
     ansSci = power_sci(StringtoSci(str_x), StringtoSci(str_y), ODE);      // 将浮点数转化为科学计数法
     ui->answerShow_5->setText(QString::number(ansSci.a, 'g', prec));   // 十位有效数字显示，小数点后九位
     ui->answerExponentlabel_5->setText(QString::number(ansSci.n));
+//    // 方法五 数值微分 - 龙贝格算法
+    ans = power_all(x, y, INTEGRAL);
+    ansSci = DoubletoSci(ans);      // 将浮点数转化为科学计数法
+    ui->answerShow_6->setText(QString::number(ansSci.a, 'g', prec));   // 十位有效数字显示，小数点后九位
+    ui->answerExponentlabel_7->setText(QString::number(ansSci.n));
+    // 方法六 数值微分 - 龙贝格算法 - 科学计数法
+//    ans = pow_ff(x, y);
+    ansSci = power_sci(StringtoSci(str_x), StringtoSci(str_y), INTEGRAL);      // 将浮点数转化为科学计数法
+    ui->answerShow_7->setText(QString::number(ansSci.a, 'g', prec));   // 十位有效数字显示，小数点后九位
+    ui->answerExponentlabel_6->setText(QString::number(ansSci.n));
+//    // 方法七 方程求根
+    ans = power_all(x, y, ROOT);
+    ansSci = DoubletoSci(ans);      // 将浮点数转化为科学计数法
+    ui->answerShow_8->setText(QString::number(ansSci.a, 'g', prec));   // 十位有效数字显示，小数点后九位
+    ui->answerExponentlabel_8->setText(QString::number(ansSci.n));
+    // 方法八 方程求根 - 科学计数法
+//    ans = pow_ff(x, y);
+    ansSci = power_sci(StringtoSci(str_x), StringtoSci(str_y), ROOT);      // 将浮点数转化为科学计数法
+    ui->answerShow_9->setText(QString::number(ansSci.a, 'g', prec));   // 十位有效数字显示，小数点后九位
+    ui->answerExponentlabel_9->setText(QString::number(ansSci.n));
 //    ans = pow_ff(x, y);
 //    ansSci = DoubletoSci(ans);      // 将浮点数转化为科学计数法
 //    ui->answerShow_3->setText(QString::number(ansSci.a, 'g', 18));   // 十位有效数字显示，小数点后九位

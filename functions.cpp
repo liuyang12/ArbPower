@@ -10,6 +10,8 @@
 #include "functions.h"
 #include "Taylor.h"
 #include "ode.h"
+#include "integral.h"
+#include "root.h"
 
 /// 科学计数法与字符串之间的转化
 // 已通过 setValidator 限定 str 为双精度数
@@ -119,6 +121,12 @@ double power_all(double x, double y, METHOD method)
     case ODE:       // 常微分方程初值问题解方法
         return power_ode(x, y);
         break;
+    case INTEGRAL:
+        return power_integral(x, y);
+        break;
+    case ROOT:
+        return power_root(x, y, TAYLOR);
+        break;
     default:
         return 0.0;
         break;
@@ -136,6 +144,13 @@ SciNumber power_sci(SciNumber sx, SciNumber sy, METHOD method)
         break;
     case ODE:
         ex = y*(sx.n + log10_ode(sx.a));
+        break;
+    case INTEGRAL:
+        ex = y*(sx.n + log10_ode(sx.a));
+        method = TAYLOR;    // 指数采用Taylor展开进行计算
+        break;
+    case ROOT:
+        ex = y*(sx.n + log10_taylor(sx.a));
         break;
     default:
         ex = 0.0;
@@ -156,6 +171,9 @@ SciNumber exp10_tosci(double x, METHOD method)
     case ODE:       // 常微分方程初值问题解方法
         a = exp_ode(LN_TEN * (x - n));
         break;
+    case ROOT:
+        a = exp_root(LN_TEN * (x - n), TAYLOR);
+        break;
     default:
         break;
     }
@@ -171,6 +189,9 @@ double ln_sci(SciNumber sn, METHOD method)     // 返回值为 浮点数而不�
         break;
     case ODE:
         return (LN_TEN * 1.0 * sn.n + ln_ode(sn.a));
+        break;
+    case INTEGRAL:
+        return (LN_TEN * 1.0 * sn.n + ln_integral(sn.a));
         break;
     default:
         return 0;
